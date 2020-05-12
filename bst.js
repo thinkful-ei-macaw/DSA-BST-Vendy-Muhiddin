@@ -37,7 +37,7 @@ class BinarySearchTree {
   }
   find(key) {
     // If the item is found at the root then return that value
-    if (this.key == key) {
+    if (this.key === key) {
       return this.value;
     }
     /* If the item you are looking for is less than the root 
@@ -63,7 +63,7 @@ class BinarySearchTree {
   }
 
   remove(key) {
-    if (this.key == key) {
+    if (this.key === key) {
       if (this.left && this.right) {
         const successor = this.right._findMin();
         this.key = successor.key;
