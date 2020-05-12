@@ -10,8 +10,14 @@ function main() {
   BST.insert(2, 2);
   BST.insert(5, 5);
   BST.insert(7, 7);
-  //#4.
-  findHeight(BST);
+  BST.insert(1, 1);
+  console.log(thirdLargest(BST));
+  // let BST = new bst(4, 4);
+  // BST.left = new bst(5, 5);
+  // BST.right = new bst(3, 3);
+  
+  // console.log(isBST(BST, 1, 9));
+  // findHeight(BST);
   // console.log(tree(BST));
   // console.log(BST);
   // E A S Y Q U E S T I O N
@@ -31,7 +37,26 @@ function main() {
 
 }
 
+// 7. 3rd largest node
+
+function thirdLargest(bst) {
+  
+  return bst.right.right.value;
+}
+
 // 6. Is it a BST?
+
+function isBST(binaryTree, minval, maxval){
+  if (binaryTree === null) {
+    return true;
+  }
+  return (
+    (minval === null || minval <= binaryTree.value) &&
+      (maxval === null || maxval >= binaryTree.value) &&
+      isBST(binaryTree.left, minval, binaryTree.value) &&
+      isBST(binaryTree.right, binaryTree.value, maxval)
+  );
+}
 
 // 5. Height of a BST
 function findHeight(b) {
@@ -59,6 +84,7 @@ function tree(t){
   if(!t){
     return 0;
   }
-  return tree(t.left) + t.value + tree(t.right)
+  return tree(t.left) + t.value + tree(t.right);
 }
+
 main();
