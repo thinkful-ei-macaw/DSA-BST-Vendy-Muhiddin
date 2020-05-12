@@ -11,7 +11,7 @@ function main() {
   BST.insert(5, 5);
   BST.insert(7, 7);
   BST.insert(1, 1);
-  console.log(thirdLargest(BST));
+  console.log(nthLargest(BST, 4));
   // let BST = new bst(4, 4);
   // BST.left = new bst(5, 5);
   // BST.right = new bst(3, 3);
@@ -39,10 +39,44 @@ function main() {
 
 // 7. 3rd largest node
 
-function thirdLargest(bst) {
-  
-  return bst.right.right.value;
+function nthLargest(bst, n) {
+  let current = bst;
+  let nthLargest = null;
+  let count = 0;
+
+  while(current !== null){
+    //if right child is null
+    if(current.right === null){
+      count++;
+      if(count === n){
+        nthLargest = current;
+      }
+      //move to the left child
+      current = current.left;
+    } else{
+      //find inorder successor of current Node
+      let succ = current.right;
+
+      while(succ.left !== null && succ.left !== current)
+        succ = succ.left;
+      
+      if(succ.left == null) {
+        succ.left = current;
+        current = current.right;
+      } else {
+        succ.left = null;
+        count++;
+        if(count === n)
+          nthLargest = current;
+
+        current = current.left;
+      }
+    }
+  }
+  return nthLargest;
 }
+
+
 
 // 6. Is it a BST?
 
