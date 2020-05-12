@@ -9,6 +9,7 @@ class BinarySearchTree {
     this.right = null;
   }
 
+
   insert(key, value) {
     //if tree is empty, then make root node of tree
     if(this.key === null) {

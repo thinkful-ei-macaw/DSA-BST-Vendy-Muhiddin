@@ -11,7 +11,8 @@ function main() {
   BST.insert(5, 5);
   BST.insert(7, 7);
   //#4.
-  console.log(tree(BST));
+  findHeight(BST);
+  // console.log(tree(BST));
   // console.log(BST);
   // E A S Y Q U E S T I O N
   // BST.insert('E', 'E');
@@ -27,9 +28,30 @@ function main() {
   // BST.insert('O', 'O');
   // BST.insert('N', 'N');
   // console.log(BST);
- // 5. Height of a BST
+
 }
 
+// 6. Is it a BST?
+
+// 5. Height of a BST
+function findHeight(b) {
+  //base case
+  if(b === null) {
+    return 0;
+  }
+  else{
+    let leftHeight = findHeight(b.left);
+    console.log(leftHeight); 
+    let rightHeight = findHeight(b.right);
+    console.log(rightHeight);
+    if(leftHeight > rightHeight) {
+      return leftHeight + 1;
+    }
+    else {
+      return rightHeight + 1;
+    }
+  }
+}
 //4. What does this program do?
 //get sum of all values in tree, 
 //runtime: O(1)
